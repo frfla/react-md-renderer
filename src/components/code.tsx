@@ -1,8 +1,9 @@
 'use client';
-import { useForceRender } from '#/use-force-render';
+import { useForceRender } from '../../_lib/use-force-render';
 import type { HTMLAttributes, Ref } from 'react';
 import { useEffect, forwardRef } from 'react';
 import { ExtraProps } from 'react-markdown';
+import { warning } from '../../_lib/warn';
 
 interface MDExtraProps extends ExtraProps {
   inline?: boolean;
@@ -11,34 +12,34 @@ interface MDExtraProps extends ExtraProps {
 }
 type Props = HTMLAttributes<HTMLElement> & MDExtraProps;
 
-export const Code = forwardRef<HTMLElement | HTMLPreElement>(({ inline = false, theme, ...props }: Props, ref) => {
-  const forceReRender = useForceRender();
+export const Code = forwardRef<HTMLElement | HTMLPreElement, Props>(
+  ({ inline = false, theme, ...props }: Props, ref) => {
+    const forceReRender = useForceRender();
 
-  useEffect(() => {
-    (async function () {
-      await import(`highlight.js/styles/${theme || 'github'}.css`).catch(err => {
-        console.warn(
-          `<md-renderer> failed to load code theme - ${theme}`,
-          '\n',
-          'To change Theme, See highlight.js',
-          err
+    useEffect(() => {
+      (async function () {
+        await import(`highlight.js/styles/${theme || 'github'}.css`).catch(err =>
+          warning(
+            `failed to load code theme - ${theme}. To change Theme, See highlight.js`,
+            err
+          )
         );
-      });
-    })();
+      })();
 
-    forceReRender();
-  }, []);
+      forceReRender();
+    }, []);
 
-  if (inline) {
-    return (
-      <code ref={ref} className={props.className} {...props}>
-        {props.children}
-      </code>
-    );
-  } else
-    return (
-      <pre ref={ref as Ref<HTMLPreElement>} className={props.className} {...props}>
-        {props.children}
-      </pre>
-    );
-});
+    if (inline) {
+      return (
+        <code ref={ref} className={props.className} {...props}>
+          {props.children}
+        </code>
+      );
+    } else
+      return (
+        <pre ref={ref as Ref<HTMLPreElement>} className={props.className} {...props}>
+          {props.children}
+        </pre>
+      );
+  }
+);

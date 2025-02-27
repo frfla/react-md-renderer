@@ -9,7 +9,7 @@ import { RendererCSSSet } from './types';
 //3. v-ex
 //4. stitches
 //5. pure css
-export function themeSet(css: Partial<RendererCSSSet>): RendererCSSSet {
+export function themeSet(css?: Partial<RendererCSSSet>): RendererCSSSet {
   const result: RendererCSSSet = {
     h1: undefined,
     h2: undefined,
@@ -19,7 +19,7 @@ export function themeSet(css: Partial<RendererCSSSet>): RendererCSSSet {
     h6: undefined,
     p: undefined,
     a: undefined,
-    blockQuote: undefined,
+    blockquote: undefined,
     checkbox: undefined,
     code: '',
     hr: undefined,
@@ -33,5 +33,5 @@ export function themeSet(css: Partial<RendererCSSSet>): RendererCSSSet {
       italic: undefined
     }
   };
-  return result;
+  return { ...result, ...css };
 }

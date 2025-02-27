@@ -1,7 +1,15 @@
 import { styled } from '@stitches/react';
+import { HTMLAttributes } from 'react';
+import { ExtraProps } from 'react-markdown';
 
-export function Table() {
-  return <T></T>;
+interface MDExtraProps extends ExtraProps {
+  css?: any;
 }
 
-const T = styled('table', {});
+type Props = HTMLAttributes<HTMLTableElement> & MDExtraProps;
+
+export function Table({ css, ...props }: Props) {
+  return <Comp css={css} {...props}></Comp>;
+}
+
+const Comp = styled('table', {});

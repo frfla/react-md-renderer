@@ -1,11 +1,13 @@
 import LINK from './util/conditional-link';
-import { useIsomorphicLayoutEffect } from '#/use-isomorphic-layout-effect';
+import { useIsomorphicLayoutEffect } from '../../_lib/use-isomorphic-layout-effect';
 import { useState } from 'react';
-import { isClient } from '#/device';
+import { isClient } from '../../_lib/device';
 import { styled } from '@stitches/react';
 
 export function Anchor({ ...props }) {
-  const [basePath, setBasePath] = useState<string>(process.env.MD_RENDERER_ROOT_URL ?? '');
+  const [basePath, setBasePath] = useState<string>(
+    process.env.MD_RENDERER_ROOT_URL ?? ''
+  );
 
   useIsomorphicLayoutEffect(() => {
     if (!basePath && isClient()) setBasePath(window.location.origin);
@@ -21,7 +23,14 @@ export function Anchor({ ...props }) {
         <LINK to={relativePath} {...props} />
       </WRAPPER>
     );
-  return <A href={props.href} target="_blank" rel={props.rel ?? `noreferrer noopener`} {...props} />;
+  return (
+    <A
+      href={props.href}
+      target="_blank"
+      rel={props.rel ?? `noreferrer noopener`}
+      {...props}
+    />
+  );
 }
 
 const A = styled('a', {});

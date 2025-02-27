@@ -1,7 +1,15 @@
 import { styled } from '@stitches/react';
+import { HTMLAttributes } from 'react';
+import { ExtraProps } from 'react-markdown';
 
-export function OL() {
-  return <L></L>;
+interface MDExtraProps extends ExtraProps {
+  css?: any;
 }
 
-const L = styled('ol', {});
+type Props = HTMLAttributes<HTMLOListElement> & MDExtraProps;
+
+export function OL({ css, ...props }: Props) {
+  return <Comp css={css} {...props}></Comp>;
+}
+
+const Comp = styled('ol', {});

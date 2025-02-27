@@ -1,47 +1,79 @@
 {
-  "name": "@frfla/md-renderer",
-  "version": "0.0.1r",
+  "name": "@frfla/react-md-renderer",
+  "version": "0.0.0",
   "description": "markdown renderer with react",
-  "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "build": "bunchee"
+    "build": "parcel build --no-optimize && tsc --emitDeclarationOnly --declaration --outDir dist/types",
+    "watch": "parcel watch"
   },
-  "keywords": [],
+  "source": "src/index.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.ts"
+      },
+      "require": {
+        "default": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.en.md",
+    "README.ko.md"
+  ],
+  "keywords": [
+    "markdown",
+    "react markdown",
+    "react"
+  ],
   "author": "brewcold <seung.yoon.yu@gmail.com>",
   "license": "MIT",
   "publishConfig": {
     "@frfla:registry": "https://npm.pkg.github.com"
   },
-  "devDependencies": {
-    "@remix-run/react": "^2.15.2",
+  "dependencies": {
     "@stitches/react": "^1.2.8",
-    "@types/node": "^20.12.4",
+    "react-markdown": "^9.0.3",
+    "rehype-highlight": "^7.0.1",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@parcel/bundler-library": "^2.13.3",
+    "@parcel/config-default": "^2.13.3",
+    "@parcel/packager-ts": "2.13.3",
+    "@parcel/transformer-typescript-types": "2.13.3",
+    "@types/node": "^20.17.16",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/react-router-dom": "^5.3.3",
-    "bunchee": "^5.1.2",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
     "highlight.js": "^11.11.1",
-    "next": "^15.1.6",
+    "parcel": "^2.13.3",
+    "parcel-resolver-tspaths": "^0.0.9",
     "prettier": "^3.2.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-markdown": "^9.0.3",
-    "react-router-dom": "^7.1.3",
-    "rehype-highlight": "^7.0.1",
-    "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
+    "@remix-run/react": "^2.0.0",
     "next": "^14.0.0 || ^15.0.0",
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "react-router-dom": "^6.0.0 || ^7.0.0"
   },
   "prettier": {
     "tabWidth": 2,

@@ -12,6 +12,7 @@ Thumbs.db
 /build
 /out
 /.next
+.parcel-cache
 
 # Ignore Yarn's default install directories
 .pnp.*

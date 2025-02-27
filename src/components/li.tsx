@@ -1,7 +1,15 @@
 import { styled } from '@stitches/react';
+import { HTMLAttributes } from 'react';
+import { ExtraProps } from 'react-markdown';
 
-export function LI() {
-  return <L></L>;
+interface MDExtraProps extends ExtraProps {
+  css?: any;
 }
 
-const L = styled('li', {});
+type Props = HTMLAttributes<HTMLLIElement> & MDExtraProps;
+
+export function LI({ css, ...props }: Props) {
+  return <Comp css={css} {...props}></Comp>;
+}
+
+const Comp = styled('li', {});

@@ -1,2 +1,2 @@
-export * from './render-markdown';
+export * from './renderer';
 export * from './theme-set';
