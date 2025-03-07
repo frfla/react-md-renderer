@@ -34,3 +34,7 @@
 ### `classNamePrefix`: string
 
 When CSS is defined externally without injection (e.g. module CSS), you can apply a prefix. In this case, classNames are assigned in the format `prefix-h1`, `prefix-h2`; if no prefix is provided, each tag automatically receives a className such as `md-renderer-h1`. **When the CSS prop is injected, the prefix is ignored.**
+
+### basepath for `a` tag
+
+The site’s root address(e.g. http://localhost:3000) must be set as an environment variable named MD_RENDERER_BASEPATH.
