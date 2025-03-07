@@ -35,7 +35,3 @@
 ### `classNamePrefix`: string
 
 CSS를 주입하지 않고 외부에서 정의하는 경우 prefix를 붙일 수 있습니다. (e.g. module css) 이때 `prefix-h1`, `prefix-h2`의 형태로 className이 부여되고 없는 경우 `md-renderer-h1`처럼 각 태그에 className이 자동으로 부여됩니다. CSS prop이 주입되는 경우에는 prefix가 무시됩니다.
-
-### `a`태그의 정상 작동을 위한 환경변수 설정
-
-사이트의 루트 주소(e.g. http://localhost:3000)를 MD_RENDERER_BASEPATH라는 이름으로 환경 변수에 설정해야 합니다.

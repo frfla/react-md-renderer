@@ -1,3 +1,4 @@
+'use client';
 import LINK from './util/conditional-link';
 import { useIsomorphicLayoutEffect } from '../../_lib/use-isomorphic-layout-effect';
 import { useState } from 'react';
@@ -5,12 +6,10 @@ import { isClient } from '../../_lib/device';
 import { styled } from '@stitches/react';
 
 export function Anchor({ ...props }) {
-  const [basePath, setBasePath] = useState<string>(
-    process.env.MD_RENDERER_ROOT_URL ?? ''
-  );
+  const [basePath, setBasePath] = useState<string>('');
 
   useIsomorphicLayoutEffect(() => {
-    if (!basePath && isClient()) setBasePath(window.location.origin);
+    if (isClient()) setBasePath(window.location.origin);
   }, []);
 
   const absoluteURL = new URL(props.href, basePath);

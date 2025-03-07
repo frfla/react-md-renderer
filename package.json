@@ -1,6 +1,6 @@
 {
   "name": "@frfla/react-md-renderer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "markdown renderer with react",
   "scripts": {
     "build": "parcel build --no-optimize && tsc --emitDeclarationOnly --declaration --outDir dist/types",
