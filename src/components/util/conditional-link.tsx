@@ -1,9 +1,6 @@
-import { LinkProps } from 'react-router-dom';
 import { Link as ReactLink } from 'react-router-dom';
 
-let LINK: React.ForwardRefExoticComponent<
-  LinkProps & React.RefAttributes<HTMLAnchorElement>
->;
+let LINK: React.ForwardRefExoticComponent<any>;
 LINK = ReactLink;
 try {
   const { Link } = require('next/navigation');

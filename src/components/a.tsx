@@ -16,12 +16,7 @@ export function Anchor({ ...props }) {
   const relativePath = `${absoluteURL.pathname}${absoluteURL.search}${absoluteURL.hash}`;
   const IS_INTERNAL = absoluteURL.origin === basePath;
 
-  if (IS_INTERNAL)
-    return (
-      <WRAPPER {...props.className}>
-        <LINK to={relativePath} {...props} />
-      </WRAPPER>
-    );
+  if (IS_INTERNAL) return <LINK to={relativePath} href={relativePath} {...props} />;
   return (
     <A
       href={props.href}
@@ -33,4 +28,3 @@ export function Anchor({ ...props }) {
 }
 
 const A = styled('a', {});
-const WRAPPER = styled('div', {});
