@@ -1,6 +1,7 @@
+import type { ComponentType } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 
-let LINK: React.ForwardRefExoticComponent<any>;
+let LINK: ComponentType<any>;
 LINK = ReactLink;
 try {
   const { Link } = require('next/navigation');
