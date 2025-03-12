@@ -1,34 +1,66 @@
-name: PUBLISH
+name: publish
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths: ['package.json']
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-
+  diff:
+    runs-on: ubuntu-22.04
+    outputs:
+      previous: ${{ steps.version.outputs.previous }}
+      current: ${{ steps.version.outputs.current }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
         with:
-          node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Install deps
-        run: pnpm install
-
-      - name: Build
-        run: pnpm build
-
-      - name: Publish
+          fetch-depth: 2
+      - id: version
+        run: |
+          previous=$(git show HEAD^:package.json | grep '"version"' | awk -F '"' '{print $4}')
+          current=$(git show HEAD:package.json | grep '"version"' | awk -F '"' '{print $4}')
+          echo "previous=v$previous" >> $GITHUB_OUTPUT
+          echo "current=v$current" >> $GITHUB_OUTPUT
+  create-tag:
+    needs: diff
+    runs-on: ubuntu-22.04
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    if: needs.diff.outputs.previous != needs.diff.outputs.current
+    steps:
+      - uses: actions/checkout@v4
+      - id: tag
+        run: |
+          tag=${{ needs.diff.outputs.current }}
+          git tag $tag
+          git push origin $tag
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+  create-release:
+    needs: create-tag
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/create-release@v1
         env:
-          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-        run: npm publish
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.create-tag.outputs.tag }}
+          release_name: ${{ needs.create-tag.outputs.tag }}
+          draft: false
+          prerelease: false
+
+  npm-publish:
+    needs: create-release
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - env:
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+        run: |
+          npm ci
+          npm run build
+          npm publish

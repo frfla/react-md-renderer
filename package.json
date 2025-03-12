@@ -1,10 +1,11 @@
 {
   "name": "@frfla/react-md-renderer",
-  "version": "0.0.3",
+  "version": "0.0.0",
   "description": "markdown renderer with react",
   "scripts": {
     "build": "parcel build --no-optimize && tsc --emitDeclarationOnly --declaration --outDir dist/types",
-    "watch": "parcel watch"
+    "watch": "parcel watch",
+    "publish": "npm publish --access=public"
   },
   "source": "src/index.ts",
   "main": "dist/index.cjs",
@@ -36,9 +37,6 @@
   ],
   "author": "brewcold <seung.yoon.yu@gmail.com>",
   "license": "MIT",
-  "publishConfig": {
-    "@frfla:registry": "https://npm.pkg.github.com"
-  },
   "dependencies": {
     "@stitches/react": "^1.2.8",
     "react-markdown": "^9.0.3",
