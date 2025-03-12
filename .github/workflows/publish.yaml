@@ -1,69 +1,33 @@
-permissions:
-  contents: write
-
-name: publish
+name: Build / Publish
 
 on:
   push:
-    branches: [main]
-    paths: ['package.json']
+    branches:
+      - main
 
 jobs:
-  diff:
-    runs-on: ubuntu-22.04
-    outputs:
-      previous: ${{ steps.version.outputs.previous }}
-      current: ${{ steps.version.outputs.current }}
+  build-and-publish:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-      - id: version
-        run: |
-          previous=$(git show HEAD^:package.json | grep '"version"' | awk -F '"' '{print $4}')
-          current=$(git show HEAD:package.json | grep '"version"' | awk -F '"' '{print $4}')
-          echo "previous=v$previous" >> $GITHUB_OUTPUT
-          echo "current=v$current" >> $GITHUB_OUTPUT
-  create-tag:
-    needs: diff
-    runs-on: ubuntu-22.04
-    outputs:
-      tag: ${{ steps.tag.outputs.tag }}
-    if: needs.diff.outputs.previous != needs.diff.outputs.current
-    steps:
-      - uses: actions/checkout@v4
-      - id: tag
-        run: |
-          tag=${{ needs.diff.outputs.current }}
-          git tag $tag
-          git push origin $tag
-          echo "tag=$tag" >> $GITHUB_OUTPUT
-  create-release:
-    needs: create-tag
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ needs.create-tag.outputs.tag }}
-          release_name: ${{ needs.create-tag.outputs.tag }}
-          draft: false
-          prerelease: false
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  npm-publish:
-    needs: create-release
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org
-      - env:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Install package manager
+        run: npm install -g pnpm
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Publish to npm
+        run: pnpm publish
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-        run: |
-          npm ci
-          npm run build
-          npm publish
