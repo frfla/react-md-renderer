@@ -29,7 +29,6 @@
 
 - markups: `a`, `blockquote`, `checkbox`, `code`, `h1-h6`, `hr`, `img`, `li`, `ol`, `ul`, `p`, `table`,
 - 해당하는 마크업을 KEY로 CSS를 주입합니다. string도 가능하며(이 경우 className으로 작동합니다), object type으로 스타일을 직접 주입할 수도 있습니다. 기본적으로 CSS 라이브러리에 종속적이지 않습니다.
-- `code`의 경우 highlight.js의 테마명을 입력하면 해당 테마가 적용됩니다.
 - e.g. `...CSS={{h1: {color:'blue'}, h2: 'className', p: CSS_VAR}}...`
 
 ### `classNamePrefix`: string
