@@ -1,6 +1,6 @@
 {
   "name": "@frfla/react-md-renderer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "markdown renderer with react",
   "scripts": {
     "build": "parcel build --no-optimize && tsc --emitDeclarationOnly --declaration --outDir dist/types",
@@ -42,8 +42,7 @@
     "react-markdown": "^9.0.3",
     "rehype-highlight": "^7.0.1",
     "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0",
-    "highlight.js": "^11.11.1"
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
     "@parcel/bundler-library": "^2.13.3",
