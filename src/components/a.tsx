@@ -12,8 +12,11 @@ export function Anchor({ ...props }) {
     if (isClient()) setBasePath(window.location.origin);
   }, []);
 
-  const absoluteURL = new URL(props.href, basePath);
-  const relativePath = `${absoluteURL.pathname}${absoluteURL.search}${absoluteURL.hash}`;
+  const absoluteURL = basePath.length ? new URL(props.href, basePath) : props.href;
+
+  const relativePath =
+    `${absoluteURL.pathname}${absoluteURL.search}${absoluteURL.hash}` || props.href;
+
   const IS_INTERNAL = absoluteURL.origin === basePath;
 
   if (IS_INTERNAL) return <LINK to={relativePath} href={relativePath} {...props} />;
