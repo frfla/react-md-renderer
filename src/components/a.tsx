@@ -1,4 +1,3 @@
-'use client';
 import LINK from './util/conditional-link';
 import { useIsomorphicLayoutEffect } from '../../_lib/use-isomorphic-layout-effect';
 import { useState } from 'react';

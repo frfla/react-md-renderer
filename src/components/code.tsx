@@ -1,4 +1,3 @@
-'use client';
 import type { HTMLAttributes, Ref } from 'react';
 import { forwardRef } from 'react';
 import { ExtraProps } from 'react-markdown';
