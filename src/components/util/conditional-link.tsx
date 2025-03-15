@@ -1,8 +1,9 @@
 import type { ComponentType } from 'react';
-import { Link as ReactLink } from 'react-router-dom';
+import { styled } from '@stitches/react';
 
+const FallbackLink = styled('a', {});
 let LINK: ComponentType<any>;
-LINK = ReactLink;
+
 try {
   const { Link } = require('next/navigation');
   LINK = Link;
@@ -11,7 +12,17 @@ try {
     const { Link } = require('@remix-run/react');
     LINK = Link;
   } catch (e) {
-    console.warn('failed to load framework', e);
+    try {
+      const { Link } = require('react-router-dom');
+      LINK = Link;
+    } catch (e) {
+      try {
+        const { Link } = require('react-router');
+        LINK = Link;
+      } catch (e) {
+        LINK = FallbackLink;
+      }
+    }
   }
 }
 
