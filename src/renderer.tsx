@@ -46,58 +46,56 @@ export function Renderer({ markdown, CSS, classNamePrefix }: MarkdownRendererPro
       rehypePlugins={[rehypeRaw, rehypeHighlight]}
       components={{
         a: ({ ...props }) => (
-          <Anchor className={`${prefix('a')}`} css={inlineCSS('a')} {...props} />
+          <Anchor className={prefix('a')} css={inlineCSS('a')} {...props} />
         ),
         blockquote: ({ ...props }) => (
           <Blockquote
-            className={`${prefix('blockquote')}`}
+            className={prefix('blockquote')}
             css={inlineCSS('blockquote')}
             {...props}
           />
         ),
         code: ({ ...props }) => (
           <Code
-            className={`${prefix('code')}`}
+            className={prefix('code')}
             theme={inlineCSS('code') === 'string' && inlineCSS('code')}
             {...props}
           />
         ),
         h1: ({ ...props }) => (
-          <Hn depth="h1" className={`${prefix('h1')}`} css={inlineCSS('h1')} {...props} />
+          <Hn depth="h1" className={prefix('h1')} css={inlineCSS('h1')} {...props} />
         ),
         h2: ({ ...props }) => (
-          <Hn depth="h2" className={`${prefix('h2')}`} css={inlineCSS('h2')} {...props} />
+          <Hn depth="h2" className={prefix('h2')} css={inlineCSS('h2')} {...props} />
         ),
         h3: ({ ...props }) => (
-          <Hn depth="h3" className={`${prefix('h3')}`} css={inlineCSS('h3')} {...props} />
+          <Hn depth="h3" className={prefix('h3')} css={inlineCSS('h3')} {...props} />
         ),
         h4: ({ ...props }) => (
-          <Hn depth="h4" className={`${prefix('h4')}`} css={inlineCSS('h4')} {...props} />
+          <Hn depth="h4" className={prefix('h4')} css={inlineCSS('h4')} {...props} />
         ),
         h5: ({ ...props }) => (
-          <Hn depth="h5" className={`${prefix('h5')}`} css={inlineCSS('h5')} {...props} />
+          <Hn depth="h5" className={prefix('h5')} css={inlineCSS('h5')} {...props} />
         ),
         h6: ({ ...props }) => (
-          <Hn depth="h6" className={`${prefix('h6')}`} css={inlineCSS('h6')} {...props} />
+          <Hn depth="h6" className={prefix('h6')} css={inlineCSS('h6')} {...props} />
         ),
         ol: ({ ...props }) => (
-          <OL className={`${prefix('ol')}`} css={inlineCSS('ol')} {...props} />
+          <OL className={prefix('ol')} css={inlineCSS('ol')} {...props} />
         ),
         ul: ({ ...props }) => (
-          <UL className={`${prefix('ul')}`} css={inlineCSS('ul')} {...props} />
+          <UL className={prefix('ul')} css={inlineCSS('ul')} {...props} />
         ),
         li: ({ ...props }) => (
-          <LI className={`${prefix('li')}`} css={inlineCSS('li')} {...props} />
+          <LI className={prefix('li')} css={inlineCSS('li')} {...props} />
         ),
         table: ({ ...props }) => (
-          <Table className={`${prefix('table')}`} css={inlineCSS('table')} {...props} />
+          <Table className={prefix('table')} css={inlineCSS('table')} {...props} />
         ),
         img: ({ ...props }) => (
-          <Image className={`${prefix('img')}`} css={inlineCSS('img')} {...props} />
+          <Image className={prefix('img')} css={inlineCSS('img')} {...props} />
         ),
-        p: ({ ...props }) => (
-          <P className={`${prefix('p')}`} css={inlineCSS('p')} {...props} />
-        )
+        p: ({ ...props }) => <P className={prefix('p')} css={inlineCSS('p')} {...props} />
       }}
     />
   );
