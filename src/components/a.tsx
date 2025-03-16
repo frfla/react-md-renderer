@@ -1,24 +1,24 @@
-import LINK from './util/conditional-link';
-import { useIsomorphicLayoutEffect } from '../../_lib/use-isomorphic-layout-effect';
-import { useState } from 'react';
-import { isClient } from '../../_lib/device';
+// import LINK from './util/conditional-link';
+// import { useIsomorphicLayoutEffect } from '../../_lib/use-isomorphic-layout-effect';
+// import { useState } from 'react';
+// import { isClient } from '../../_lib/device';
 import { styled } from '@stitches/react';
 
 export function Anchor({ ...props }) {
-  const [basePath, setBasePath] = useState<string>('');
+  // const [basePath, setBasePath] = useState<string>('');
 
-  useIsomorphicLayoutEffect(() => {
-    if (isClient()) setBasePath(window.location.origin);
-  }, []);
+  // useIsomorphicLayoutEffect(() => {
+  //   if (isClient()) setBasePath(window.location.origin);
+  // }, []);
 
-  const absoluteURL = basePath.length ? new URL(props.href, basePath) : props.href;
+  // const absoluteURL = basePath.length ? new URL(props.href, basePath) : props.href;
 
-  const relativePath =
-    `${absoluteURL.pathname}${absoluteURL.search}${absoluteURL.hash}` || props.href;
+  // const relativePath =
+  //   `${absoluteURL.pathname}${absoluteURL.search}${absoluteURL.hash}` || props.href;
 
-  const IS_INTERNAL = absoluteURL.origin === basePath;
+  // const IS_INTERNAL = absoluteURL.origin === basePath;
 
-  if (IS_INTERNAL) return <LINK to={relativePath} href={relativePath} {...props} />;
+  // if (IS_INTERNAL) return <LINK to={relativePath} href={relativePath} {...props} />;
   return (
     <A
       href={props.href}
