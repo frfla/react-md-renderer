@@ -9,6 +9,8 @@
         h2: {
           fontFamily: 'serif',
         },
+        inlinecode: {...},
+        img: {...},
       }}
   />
 ```
@@ -27,7 +29,7 @@
 }
 ```
 
-- markups: `a`, `blockquote`, `checkbox`, `code`, `h1-h6`, `hr`, `img`, `li`, `ol`, `ul`, `p`, `table`
+- markups: `a`, `blockquote`, `checkbox`, `code`, `inlinecode`, `h1-h6`, `hr`, `img`, `li`, `ol`, `ul`, `p`, `table`, `strike`, `strong`, `italic`
 - CSS is injected into the corresponding markup using a KEY. It can be provided as a string, similar to a className, or you can directly inject styles using an object. By default, it is not dependent on any CSS library.
 - e.g. `...CSS={{h1: {color:'blue'}, h2: 'className', p: CSS_VAR}}...`
 

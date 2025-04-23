@@ -24,7 +24,7 @@ interface MarkdownRendererProps {
 /**
  *
  * @param markdown markdown string
- * @param CSS e.g. ...CSS={{h1: {color:'blue'}, h2: 'className', p: CSS_VAR}}...
+ * @param CSS e.g. ...CSS={{ h1: { color:'blue' }, h2: 'className', p: CSS_VAR }}...
  * @param classNamePrefix When CSS is defined externally without injection (e.g. module CSS), you can apply a prefix. In this case, classNames are assigned in the format prefix-h1, prefix-h2; if no prefix is provided, each tag automatically receives a className such as md-renderer-h1. When the CSS prop is injected, the prefix is ignored.
  */
 export function Renderer({ markdown, CSS, classNamePrefix }: MarkdownRendererProps) {
@@ -58,7 +58,9 @@ export function Renderer({ markdown, CSS, classNamePrefix }: MarkdownRendererPro
         code: ({ ...props }) => (
           <Code
             className={prefix('code')}
-            theme={inlineCSS('code') === 'string' && inlineCSS('code')}
+            inlineClassName={prefix('inlinecode')}
+            css={inlineCSS('code') === 'string' && inlineCSS('code')}
+            inlineCss={inlineCSS('inlinecode') === 'string' && inlineCSS('inlinecode')}
             {...props}
           />
         ),

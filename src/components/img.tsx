@@ -12,4 +12,6 @@ export function Image({ css, ...props }: Props) {
   return <Comp css={css} {...props}></Comp>;
 }
 
-const Comp = styled('img', {});
+const Comp = styled('img', {
+  display: 'block'
+});

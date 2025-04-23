@@ -1,36 +1,29 @@
-//@ts-nocheck
-//type과 함께 파일 작성 후 반드시 지울 것
-
 import { RendererCSSSet } from './types';
 
-//TODO: CSS Libarary Agnostic할 것
-//1. styled-components
-//2. emotion
-//3. v-ex
-//4. stitches
-//5. pure css
 export function themeSet(css?: Partial<RendererCSSSet>): RendererCSSSet {
   const result: RendererCSSSet = {
-    h1: undefined,
-    h2: undefined,
-    h3: undefined,
-    h4: undefined,
-    h5: undefined,
-    h6: undefined,
-    p: undefined,
-    a: undefined,
-    blockquote: undefined,
-    checkbox: undefined,
+    h1: '',
+    h2: '',
+    h3: '',
+    h4: '',
+    h5: '',
+    h6: '',
+    p: '',
+    a: '',
+    blockquote: '',
+    checkbox: '',
     code: '',
-    hr: undefined,
-    img: undefined,
-    ul: undefined,
-    ol: undefined,
-    table: undefined,
+    inlinecode: '',
+    hr: '',
+    img: '',
+    ul: '',
+    ol: '',
+    li: '',
+    table: '',
     typography: {
-      strike: undefined,
-      strong: undefined,
-      italic: undefined
+      strike: '',
+      strong: '',
+      italic: ''
     }
   };
   return { ...result, ...css };

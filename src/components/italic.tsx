@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react';
 
-export function Italic() {
-  return <I></I>;
+export function Italic({ ...props }) {
+  return <I {...props} />;
 }
 
 const I = styled('span', {});

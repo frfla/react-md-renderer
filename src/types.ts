@@ -9,6 +9,7 @@ export interface RendererCSSSet {
   a: Object | string | (() => Object);
   blockquote: Object | string | (() => Object);
   checkbox: Object | string | (() => Object);
+  inlinecode: Object | string | (() => Object);
   code: Object | string | (() => Object);
   hr: Object | string | (() => Object);
   img: Object | string | (() => Object);
