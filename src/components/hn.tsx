@@ -16,25 +16,24 @@ interface MDExtraProps extends ExtraProps {
 
 type Props = HTMLAttributes<HTMLParagraphElement> & MDExtraProps;
 
+let H1_RENDERED = false;
+
 export const Hn = forwardRef(
   ({ depth = 'h1', ...props }: Props, ref: Ref<HTMLParagraphElement>) => {
-    const b_HasRendered = useRef<boolean>(false);
-    const [Component, setComponent] = useState<(typeof Comp)[typeof depth]>(Comp[depth]);
+    let level = Number(depth.slice(-1)); // 1 ~ 6
 
-    let CLASSNAME = props.className;
+    if (level === 1) {
+      if (H1_RENDERED) level = 2;
+      else H1_RENDERED = true;
+    }
 
-    /** renders h1 only once for title */
-    useEffect(() => {
-      if (depth !== 'h1' || !Comp[depth] || !b_HasRendered.current) return;
+    if (level >= 2 && level <= 5) level += 1;
 
-      const nextHeadingLevel =
-        `h${Number(depth.slice(-1)) <= 6 ? Number(depth.slice(-1)) + 1 : 6}` as keyof typeof Comp;
-      setComponent(Comp[nextHeadingLevel] ?? <span />);
-      let prefix = props.className!.slice(0, -2);
-      CLASSNAME = `${prefix}title`;
-    }, [depth]);
+    let CLASSNAME = props.className?.replace(depth, `h${level}`);
+    const Tag = Comp[`h${Math.min(level, 6)}` as keyof typeof Comp];
+    const nextClass = H1_RENDERED && level === 2 ? `${CLASSNAME ?? ''} title` : CLASSNAME;
 
-    return <Component ref={ref} className={CLASSNAME} {...props} />;
+    return <Tag ref={ref} className={nextClass} {...props} />;
   }
 );
 
