@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@frfla/laser':
+        specifier: ^0.1.0
+        version: 0.1.0
+      '@frfla/react-hooks':
+        specifier: ^0.10.2
+        version: 0.10.2(react@19.0.0)
       '@stitches/react':
         specifier: ^1.2.8
         version: 1.2.8(react@19.0.0)
@@ -123,6 +129,14 @@ packages:
   '@eslint/plugin-kit@0.2.5':
     resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@frfla/laser@0.1.0':
+    resolution: {integrity: sha512-oFy5Q8ix+ViXIHQ/vUH5PnLX/wnaqKd2FZCKgaDQc8Sj7EOza0yU6pu7Mj1jzzvHuaD935UkZlE+SX9JXs7Thw==}
+
+  '@frfla/react-hooks@0.10.2':
+    resolution: {integrity: sha512-cKTm8ZiAfCCedF0Uds3wE7R2xpEr/4FWjr1vevI90BG1R8LIvd0eW6at/OyvPrKYgDY/pWrgiwsF9eX7bvsJ2A==}
+    peerDependencies:
+      react: '>=18'
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -2240,6 +2254,12 @@ snapshots:
     dependencies:
       '@eslint/core': 0.10.0
       levn: 0.4.1
+
+  '@frfla/laser@0.1.0': {}
+
+  '@frfla/react-hooks@0.10.2(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
 
   '@humanfs/core@0.19.1': {}
 

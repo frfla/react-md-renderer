@@ -1,6 +1,6 @@
 {
   "name": "@frfla/react-md-renderer",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "markdown renderer with react",
   "scripts": {
     "build": "parcel build && tsc --emitDeclarationOnly --declaration --outDir dist/types",
@@ -38,6 +38,8 @@
   "author": "brewcold <seung.yoon.yu@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@frfla/laser": "^0.1.0",
+    "@frfla/react-hooks": "^0.10.2",
     "@stitches/react": "^1.2.8",
     "react-markdown": "^9.0.3",
     "rehype-highlight": "^7.0.1",
@@ -73,5 +75,6 @@
     "singleQuote": true,
     "arrowParens": "avoid",
     "trailingComma": "none"
-  }
+  },
+  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
 }
