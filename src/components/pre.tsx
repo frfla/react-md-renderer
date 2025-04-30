@@ -19,7 +19,6 @@ export const Pre = forwardRef<HTMLPreElement, Props>(({ css, ...props }: Props, 
 
 const StyledPre = styled('pre', {
   '& > code': {
-    fontFamily: 'inherit',
-    fontSize: 'inherit'
+    all: 'inherit'
   }
 });
