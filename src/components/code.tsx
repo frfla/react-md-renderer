@@ -4,12 +4,7 @@ import { forwardRef } from 'react';
 import { ExtraProps } from 'react-markdown';
 
 interface MDExtraProps extends ExtraProps {
-  inline?: boolean;
-  type?: string;
-  theme?: any;
   css?: any;
-  inlineCss?: any;
-  inlineClassName?: string;
 }
 type Props = HTMLAttributes<HTMLElement> & MDExtraProps;
 

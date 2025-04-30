@@ -57,18 +57,10 @@ export function Renderer({ markdown, CSS, classNamePrefix }: MarkdownRendererPro
           />
         ),
         pre: ({ ...props }) => (
-          <Pre
-            className={prefix('pre')}
-            css={inlineCSS('pre') === 'string' && inlineCSS('pre')}
-            {...props}
-          />
+          <Pre className={prefix('pre')} css={inlineCSS('pre')} {...props} />
         ),
         code: ({ ...props }) => (
-          <Code
-            className={prefix('code')}
-            css={inlineCSS('code') === 'string' && inlineCSS('code')}
-            {...props}
-          />
+          <Code className={prefix('code')} css={inlineCSS('code')} {...props} />
         ),
         h1: ({ ...props }) => (
           <Hn depth="h1" className={prefix('h1')} css={inlineCSS('h1')} {...props} />
