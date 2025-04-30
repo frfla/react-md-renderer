@@ -5,8 +5,8 @@ import rehypeHighlight from 'rehype-highlight';
 import { Code } from './components/code';
 import { P } from './components/p';
 import { Hn } from './components/hn';
-import { RendererCSSSet } from './types';
-import { themeSet } from './theme-set';
+import { RendererCSSMap } from './types';
+import { setTheme } from './theme-set';
 import { Anchor } from './components/a';
 import { Blockquote } from './components/blockquote';
 import { OL } from './components/ol';
@@ -18,7 +18,7 @@ import { Pre } from './components/pre';
 
 interface MarkdownRendererProps {
   markdown: string;
-  CSS?: Partial<RendererCSSSet>;
+  CSS?: Partial<RendererCSSMap>;
   classNamePrefix?: string;
 }
 
@@ -29,13 +29,13 @@ interface MarkdownRendererProps {
  * @param classNamePrefix When CSS is defined externally without injection (e.g. module CSS), you can apply a prefix. In this case, classNames are assigned in the format prefix-h1, prefix-h2; if no prefix is provided, each tag automatically receives a className such as md-renderer-h1. When the CSS prop is injected, the prefix is ignored.
  */
 export function Renderer({ markdown, CSS, classNamePrefix }: MarkdownRendererProps) {
-  const cssmap = themeSet(CSS);
+  const cssmap = setTheme(CSS);
 
   const pf = classNamePrefix ?? 'md-renderer-';
-  const prefix = (tagName: keyof RendererCSSSet) =>
+  const prefix = (tagName: keyof RendererCSSMap) =>
     typeof cssmap[tagName] === 'string' ? cssmap[tagName] : `${pf}${tagName}`;
 
-  const inlineCSS = (tagName: keyof RendererCSSSet) => {
+  const inlineCSS = (tagName: keyof RendererCSSMap) => {
     if (typeof cssmap[tagName] === 'function') return cssmap[tagName]();
     if (typeof cssmap[tagName] === 'object') return cssmap[tagName];
   };

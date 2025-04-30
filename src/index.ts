@@ -1,2 +1,2 @@
 export * from './renderer';
-export * from './theme-set';
+export * from './types';

@@ -1,7 +1,7 @@
-import { RendererCSSSet } from './types';
+import { RendererCSSMap } from './types';
 
-export function themeSet(css?: Partial<RendererCSSSet>): RendererCSSSet {
-  const result: RendererCSSSet = {
+export function setTheme(css?: Partial<RendererCSSMap>): RendererCSSMap {
+  const result: RendererCSSMap = {
     h1: '',
     h2: '',
     h3: '',

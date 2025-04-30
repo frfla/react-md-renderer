@@ -1,5 +1,7 @@
 import { OBJECT_CSS } from '../stitches.config';
-export interface RendererCSSSet {
+
+export type CSS = OBJECT_CSS;
+export interface RendererCSSMap {
   h1: OBJECT_CSS | string | (() => Object);
   h2: OBJECT_CSS | string | (() => Object);
   h3: OBJECT_CSS | string | (() => Object);
