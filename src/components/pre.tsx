@@ -11,10 +11,15 @@ type Props = HTMLAttributes<HTMLPreElement> & MDExtraProps;
 
 export const Pre = forwardRef<HTMLPreElement, Props>(({ css, ...props }: Props, ref) => {
   return (
-    <StyledCode css={css} ref={ref} className={props.className} {...props}>
+    <StyledPre css={css} ref={ref} className={props.className} {...props}>
       {props.children}
-    </StyledCode>
+    </StyledPre>
   );
 });
 
-const StyledCode = styled('pre', {});
+const StyledPre = styled('pre', {
+  '& > code': {
+    fontFamily: 'inherit',
+    fontSize: 'inherit'
+  }
+});
