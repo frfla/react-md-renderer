@@ -1,25 +1,26 @@
+import { OBJECT_CSS } from '../stitches.config';
 export interface RendererCSSSet {
-  h1: Object | string | (() => Object);
-  h2: Object | string | (() => Object);
-  h3: Object | string | (() => Object);
-  h4: Object | string | (() => Object);
-  h5: Object | string | (() => Object);
-  h6: Object | string | (() => Object);
-  p: Object | string | (() => Object);
-  a: Object | string | (() => Object);
-  blockquote: Object | string | (() => Object);
-  checkbox: Object | string | (() => Object);
-  inlinecode: Object | string | (() => Object);
-  code: Object | string | (() => Object);
-  hr: Object | string | (() => Object);
-  img: Object | string | (() => Object);
-  ul: Object | string | (() => Object);
-  ol: Object | string | (() => Object);
-  li: Object | string | (() => Object);
-  table: Object | string | (() => Object);
+  h1: OBJECT_CSS | string | (() => Object);
+  h2: OBJECT_CSS | string | (() => Object);
+  h3: OBJECT_CSS | string | (() => Object);
+  h4: OBJECT_CSS | string | (() => Object);
+  h5: OBJECT_CSS | string | (() => Object);
+  h6: OBJECT_CSS | string | (() => Object);
+  p: OBJECT_CSS | string | (() => Object);
+  a: OBJECT_CSS | string | (() => Object);
+  blockquote: OBJECT_CSS | string | (() => Object);
+  checkbox: OBJECT_CSS | string | (() => Object);
+  pre: OBJECT_CSS | string | (() => Object);
+  code: OBJECT_CSS | string | (() => Object);
+  hr: OBJECT_CSS | string | (() => Object);
+  img: OBJECT_CSS | string | (() => Object);
+  ul: OBJECT_CSS | string | (() => Object);
+  ol: OBJECT_CSS | string | (() => Object);
+  li: OBJECT_CSS | string | (() => Object);
+  table: OBJECT_CSS | string | (() => Object);
   typography: {
-    strike?: Object | string | (() => Object);
-    strong?: Object | string | (() => Object);
-    italic?: Object | string | (() => Object);
+    strike?: OBJECT_CSS | string | (() => Object);
+    strong?: OBJECT_CSS | string | (() => Object);
+    italic?: OBJECT_CSS | string | (() => Object);
   };
 }

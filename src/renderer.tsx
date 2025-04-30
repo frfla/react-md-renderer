@@ -14,6 +14,7 @@ import { UL } from './components/ul';
 import { LI } from './components/li';
 import { Image } from './components/img';
 import { Table } from './components/table';
+import { Pre } from './components/pre';
 
 interface MarkdownRendererProps {
   markdown: string;
@@ -55,12 +56,17 @@ export function Renderer({ markdown, CSS, classNamePrefix }: MarkdownRendererPro
             {...props}
           />
         ),
+        pre: ({ ...props }) => (
+          <Pre
+            className={prefix('pre')}
+            css={inlineCSS('pre') === 'string' && inlineCSS('pre')}
+            {...props}
+          />
+        ),
         code: ({ ...props }) => (
           <Code
             className={prefix('code')}
-            inlineClassName={prefix('inlinecode')}
             css={inlineCSS('code') === 'string' && inlineCSS('code')}
-            inlineCss={inlineCSS('inlinecode') === 'string' && inlineCSS('inlinecode')}
             {...props}
           />
         ),

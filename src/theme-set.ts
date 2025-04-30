@@ -13,7 +13,7 @@ export function themeSet(css?: Partial<RendererCSSSet>): RendererCSSSet {
     blockquote: '',
     checkbox: '',
     code: '',
-    inlinecode: '',
+    pre: '',
     hr: '',
     img: '',
     ul: '',
