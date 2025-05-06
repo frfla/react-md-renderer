@@ -20,15 +20,22 @@ interface MarkdownRendererProps {
   markdown: string;
   CSS?: Partial<RendererCSSMap>;
   classNamePrefix?: string;
+  adjustHeadings?: boolean;
 }
 
 /**
  *
  * @param markdown markdown string
- * @param CSS e.g. ...CSS={{ h1: { color:'blue' }, h2: 'className', p: CSS_VAR }}...
- * @param classNamePrefix When CSS is defined externally without injection (e.g. module CSS), you can apply a prefix. In this case, classNames are assigned in the format prefix-h1, prefix-h2; if no prefix is provided, each tag automatically receives a className such as md-renderer-h1. When the CSS prop is injected, the prefix is ignored.
+ * @param CSS e.g. `...CSS={{ h1: { color:'blue' }, h2: 'className', p: CSS_VAR }}...`
+ * @param classNamePrefix you can apply a classname prefix. In this case, classNames are assigned in the format `{prefix}-h1`, `{prefix}-h2`; if no prefix is provided, each tag automatically receives a className such as `md-renderer-h1`. When the CSS prop is injected, the prefix is ignored.
+ * @param adjustHeadings determines whether apply `hn` adjust or not; It ensures only one `h1` exists and normalize all heading tags throughout the document
  */
-export function Renderer({ markdown, CSS, classNamePrefix }: MarkdownRendererProps) {
+export function Renderer({
+  markdown,
+  CSS,
+  classNamePrefix,
+  adjustHeadings = false
+}: MarkdownRendererProps) {
   const cssmap = setTheme(CSS);
 
   const pf = classNamePrefix ?? 'md-renderer-';
@@ -63,22 +70,58 @@ export function Renderer({ markdown, CSS, classNamePrefix }: MarkdownRendererPro
           <Code className={prefix('code')} css={inlineCSS('code')} {...props} />
         ),
         h1: ({ ...props }) => (
-          <Hn depth="h1" className={prefix('h1')} css={inlineCSS('h1')} {...props} />
+          <Hn
+            adjustHeadings={adjustHeadings}
+            depth="h1"
+            className={prefix('h1')}
+            css={inlineCSS('h1')}
+            {...props}
+          />
         ),
         h2: ({ ...props }) => (
-          <Hn depth="h2" className={prefix('h2')} css={inlineCSS('h2')} {...props} />
+          <Hn
+            adjustHeadings={adjustHeadings}
+            depth="h2"
+            className={prefix('h2')}
+            css={inlineCSS('h2')}
+            {...props}
+          />
         ),
         h3: ({ ...props }) => (
-          <Hn depth="h3" className={prefix('h3')} css={inlineCSS('h3')} {...props} />
+          <Hn
+            adjustHeadings={adjustHeadings}
+            depth="h3"
+            className={prefix('h3')}
+            css={inlineCSS('h3')}
+            {...props}
+          />
         ),
         h4: ({ ...props }) => (
-          <Hn depth="h4" className={prefix('h4')} css={inlineCSS('h4')} {...props} />
+          <Hn
+            adjustHeadings={adjustHeadings}
+            depth="h4"
+            className={prefix('h4')}
+            css={inlineCSS('h4')}
+            {...props}
+          />
         ),
         h5: ({ ...props }) => (
-          <Hn depth="h5" className={prefix('h5')} css={inlineCSS('h5')} {...props} />
+          <Hn
+            adjustHeadings={adjustHeadings}
+            depth="h5"
+            className={prefix('h5')}
+            css={inlineCSS('h5')}
+            {...props}
+          />
         ),
         h6: ({ ...props }) => (
-          <Hn depth="h6" className={prefix('h6')} css={inlineCSS('h6')} {...props} />
+          <Hn
+            adjustHeadings={adjustHeadings}
+            depth="h6"
+            className={prefix('h6')}
+            css={inlineCSS('h6')}
+            {...props}
+          />
         ),
         ol: ({ ...props }) => (
           <OL className={prefix('ol')} css={inlineCSS('ol')} {...props} />

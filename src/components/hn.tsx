@@ -11,6 +11,7 @@ import { ExtraProps } from 'react-markdown';
 
 interface MDExtraProps extends ExtraProps {
   depth?: keyof typeof Comp;
+  adjustHeadings: boolean;
   css?: any;
 }
 
@@ -19,14 +20,15 @@ type Props = HTMLAttributes<HTMLParagraphElement> & MDExtraProps;
 let H1_RENDERED = false;
 
 export const Hn = forwardRef(
-  ({ depth = 'h1', ...props }: Props, ref: Ref<HTMLParagraphElement>) => {
+  ({ depth = 'h1', adjustHeadings, ...props }: Props, ref: Ref<HTMLParagraphElement>) => {
     let level = Number(depth.slice(-1));
 
-    if (level === 1) {
-      if (H1_RENDERED) level = 2;
-      else H1_RENDERED = true;
-    } else if (level >= 2 && level <= 5) level += 1;
-
+    if (adjustHeadings) {
+      if (level === 1) {
+        if (H1_RENDERED) level = 2;
+        else H1_RENDERED = true;
+      } else if (level >= 2 && level <= 5) level += 1;
+    }
     const Tag = Comp[`h${Math.min(level, 6)}` as keyof typeof Comp];
     return <Tag ref={ref} {...props} />;
   }
