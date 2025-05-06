@@ -23,25 +23,46 @@ pnpm add @frfla/react-md-renderer
   />
 ```
 
-## API
+# API/Props
 
-### `markdown`
-
-- Markdown Text
-
-### `CSS`
+## markdown
 
 ```
-{
+markdown: string
+```
+
+- Markdown Text (Plain Text)
+
+## CSS
+
+```
+CSS: {
   [markup]: string|CSS
 }
 ```
 
-- markups: `a`, `blockquote`, `checkbox`, `code`, `pre`, `h1-h6`, `hr`, `img`, `li`, `ol`, `ul`, `p`, `table`, `strike`, `strong`, `italic`
-- CSS is injected into the corresponding markup using a KEY. It can be provided as a string, similar to a className, or you can directly inject styles using an object. By default, it is not dependent on any CSS library.
-- e.g. `...CSS={{h1: {color:'blue'}, h2: 'className', p: CSS_VAR}}...`
-- `hn`s will adjusted
+- `a`, `blockquote`, `checkbox`, `code`, `pre`, `h1-h6`, `hr`, `img`, `li`, `ol`, `ul`, `p`, `table`, `strike`, `strong`, `italic`
+- CSS is injected into the corresponding markup using a KEY.
+  - It can be provided as a string. **In this case, it works identically with className.**
+- By default, it is not dependent on any CSS library.
 
-### `classNamePrefix`: string
+```
+...
+  CSS={
+    { h1: { color : 'blue', fontWeight: '700'  },
+      h2: 'className',
+      p: CSS_VAR }
+  }
+...
+```
 
-When CSS is defined externally without injection (e.g. module CSS), you can apply a prefix. In this case, classNames are assigned in the format `prefix-h1`, `prefix-h2`; if no prefix is provided, each tag automatically receives a className such as `md-renderer-h1`. **When the CSS prop is injected, the prefix is ignored.**
+## classNamePrefix
+
+```
+classNamePrefix?: string
+```
+
+- When CSS is defined externally without injection (e.g. module CSS), you can apply a prefix.
+- In this case, classNames are assigned in the format `prefix-h1`, `prefix-h2`;
+- If no prefix is provided, each tag automatically receives a className such as `md-renderer-h1`.
+- **When the CSS prop is injected, the prefix is ignored.**

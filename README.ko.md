@@ -23,24 +23,46 @@ pnpm add @frfla/react-md-renderer
   />
 ```
 
-## API
+# API/Props
 
-### `markdown`
+## markdown
+
+```
+markdown: string
+```
 
 - 마크다운 텍스트를 주입합니다.
 
-### `CSS`
+## CSS
 
 ```
-{
+CSS?: {
   [markup]: string|CSS
 }
 ```
 
-- markups: `a`, `blockquote`, `checkbox`, `code`, `pre`, `h1-h6`, `hr`, `img`, `li`, `ol`, `ul`, `p`, `table`, `strike`, `strong`, `italic`
-- 해당하는 마크업을 KEY로 CSS를 주입합니다. string도 가능하며(이 경우 className으로 작동합니다), object type으로 스타일을 직접 주입할 수도 있습니다. 기본적으로 CSS 라이브러리에 종속적이지 않습니다.
-- e.g. `...CSS={{h1: {color:'blue'}, h2: 'className', p: CSS_VAR}}...`
+- `a`, `blockquote`, `checkbox`, `code`, `pre`, `h1-h6`, `hr`, `img`, `li`, `ol`, `ul`, `p`, `table`, `strike`, `strong`, `italic`
+- 위에 해당하는 마크업을 KEY로 CSS를 주입할 수 있습니다.
+  - **string 타입을 제공하는 경우 className으로 작동합니다.**
+- 기본적으로 CSS 라이브러리에 종속적이지 않습니다.
 
-### `classNamePrefix`: string
+```
+...
+  CSS={
+    { h1: { color : 'blue', fontWeight: '700' },
+      h2: 'className',
+      p: CSS_VAR }
+  }
+...
+```
 
-CSS를 주입하지 않고 외부에서 정의하는 경우 prefix를 붙일 수 있습니다. (e.g. module css) 이때 `prefix-h1`, `prefix-h2`의 형태로 className이 부여되고 없는 경우 `md-renderer-h1`처럼 각 태그에 className이 자동으로 부여됩니다. CSS prop이 주입되는 경우에는 prefix가 무시됩니다.
+## classNamePrefix
+
+```
+classNamePrefix?: string
+```
+
+- CSS를 prop으로 주입하지 않고 외부에서 정의하는 경우 컨벤션을 위해 prefix를 제공합니다.
+- 이때 `prefix-h1`, `prefix-h2`의 형태로 className이 부여됩니다.
+- 값이 없는 경우 `md-renderer-h1`, `md-renderer-p`처럼 각 마크업 이름으로 className이 부여됩니다.
+- CSS prop이 주입되는 경우에는 prefix가 무시됩니다.
