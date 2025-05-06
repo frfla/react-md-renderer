@@ -1,4 +1,12 @@
-# Markdown Renderer With React
+# @frfla/react-md-renderer
+
+**Markdown Renderer With CSS-Only Customs**
+
+```
+npm install @frfla/react-md-renderer
+yarn add @frfla/react-md-renderer
+pnpm add @frfla/react-md-renderer
+```
 
 ## Quick Start
 
@@ -32,6 +40,7 @@
 - markups: `a`, `blockquote`, `checkbox`, `code`, `pre`, `h1-h6`, `hr`, `img`, `li`, `ol`, `ul`, `p`, `table`, `strike`, `strong`, `italic`
 - CSS is injected into the corresponding markup using a KEY. It can be provided as a string, similar to a className, or you can directly inject styles using an object. By default, it is not dependent on any CSS library.
 - e.g. `...CSS={{h1: {color:'blue'}, h2: 'className', p: CSS_VAR}}...`
+- `hn`s will adjusted
 
 ### `classNamePrefix`: string
 

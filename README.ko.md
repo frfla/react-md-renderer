@@ -1,4 +1,12 @@
-# Markdown Renderer With React
+# @frfla/react-md-renderer
+
+**CSS로 간단하게 커스텀하는 마크다운 렌더러**
+
+```
+npm install @frfla/react-md-renderer
+yarn add @frfla/react-md-renderer
+pnpm add @frfla/react-md-renderer
+```
 
 ## Quick Start
 
