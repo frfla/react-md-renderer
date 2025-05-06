@@ -66,3 +66,10 @@ classNamePrefix?: string
 - In this case, classNames are assigned in the format `prefix-h1`, `prefix-h2`;
 - If no prefix is provided, each tag automatically receives a className such as `md-renderer-h1`.
 - **When the CSS prop is injected, the prefix is ignored.**
+
+# Hn Correction
+
+In a document, the `h1` tag should exist as the single main heading. Here’s how to adjust it:
+
+- If there are multiple `h1` tags, change the additional ones to `h2`. Subsequent headings should be adjusted accordingly (`h3` to `h6`).
+- The styling applied to the original `h1` should be retained. This means keeping the styling that makes it appear as a primary heading while optimizing the document’s structure by adjusting the markup.
