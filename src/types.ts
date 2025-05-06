@@ -1,7 +1,6 @@
-import { config } from '../stitches.config';
 import type { CSS } from '@stitches/react';
 
-export type CSS_TYPE = CSS<typeof config>;
+export type CSS_TYPE = CSS<{}>;
 export interface RendererCSSMap {
   h1: CSS_TYPE | string | (() => Object);
   h2: CSS_TYPE | string | (() => Object);
