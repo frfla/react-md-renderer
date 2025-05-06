@@ -1,5 +1,5 @@
 import { createStitches } from '@stitches/react';
-import type * as Stitches from '@stitches/react';
+import type { CSS } from '@stitches/react/types/css-util';
 
 export const { styled, css, globalCss, config } = createStitches();
-export type OBJECT_CSS = Stitches.CSS<typeof config>;
+export type CSS_TYPE = CSS<typeof config>;

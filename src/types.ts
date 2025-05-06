@@ -1,28 +1,27 @@
-import { OBJECT_CSS } from '../stitches.config';
+import { CSS_TYPE } from '../stitches.config';
 
-export type CSS = OBJECT_CSS;
 export interface RendererCSSMap {
-  h1: OBJECT_CSS | string | (() => Object);
-  h2: OBJECT_CSS | string | (() => Object);
-  h3: OBJECT_CSS | string | (() => Object);
-  h4: OBJECT_CSS | string | (() => Object);
-  h5: OBJECT_CSS | string | (() => Object);
-  h6: OBJECT_CSS | string | (() => Object);
-  p: OBJECT_CSS | string | (() => Object);
-  a: OBJECT_CSS | string | (() => Object);
-  blockquote: OBJECT_CSS | string | (() => Object);
-  checkbox: OBJECT_CSS | string | (() => Object);
-  pre: OBJECT_CSS | string | (() => Object);
-  code: OBJECT_CSS | string | (() => Object);
-  hr: OBJECT_CSS | string | (() => Object);
-  img: OBJECT_CSS | string | (() => Object);
-  ul: OBJECT_CSS | string | (() => Object);
-  ol: OBJECT_CSS | string | (() => Object);
-  li: OBJECT_CSS | string | (() => Object);
-  table: OBJECT_CSS | string | (() => Object);
+  h1: CSS_TYPE | string | (() => Object);
+  h2: CSS_TYPE | string | (() => Object);
+  h3: CSS_TYPE | string | (() => Object);
+  h4: CSS_TYPE | string | (() => Object);
+  h5: CSS_TYPE | string | (() => Object);
+  h6: CSS_TYPE | string | (() => Object);
+  p: CSS_TYPE | string | (() => Object);
+  a: CSS_TYPE | string | (() => Object);
+  blockquote: CSS_TYPE | string | (() => Object);
+  checkbox: CSS_TYPE | string | (() => Object);
+  pre: CSS_TYPE | string | (() => Object);
+  code: CSS_TYPE | string | (() => Object);
+  hr: CSS_TYPE | string | (() => Object);
+  img: CSS_TYPE | string | (() => Object);
+  ul: CSS_TYPE | string | (() => Object);
+  ol: CSS_TYPE | string | (() => Object);
+  li: CSS_TYPE | string | (() => Object);
+  table: CSS_TYPE | string | (() => Object);
   typography: {
-    strike?: OBJECT_CSS | string | (() => Object);
-    strong?: OBJECT_CSS | string | (() => Object);
-    italic?: OBJECT_CSS | string | (() => Object);
+    strike?: CSS_TYPE | string | (() => Object);
+    strong?: CSS_TYPE | string | (() => Object);
+    italic?: CSS_TYPE | string | (() => Object);
   };
 }
