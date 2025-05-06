@@ -25,9 +25,7 @@ export const Hn = forwardRef(
     if (level === 1) {
       if (H1_RENDERED) level = 2;
       else H1_RENDERED = true;
-    }
-
-    if (level >= 2 && level <= 5) level += 1;
+    } else if (level >= 2 && level <= 5) level += 1;
 
     const Tag = Comp[`h${Math.min(level, 6)}` as keyof typeof Comp];
     return <Tag ref={ref} {...props} />;
